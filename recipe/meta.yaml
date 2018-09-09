@@ -1,5 +1,4 @@
 {% set version = '2.3' %}
-
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,12 +9,13 @@ package:
 source:
   fn: gridExtra_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/gridExtra_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/gridExtra/gridExtra_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/gridExtra_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/gridExtra/gridExtra_{{ version }}.tar.gz
   sha256: 81b60ce6f237ec308555471ae0119158b115463df696d2eca9b177ded8988e3b
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -23,6 +23,8 @@ build:
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-gtable
   run:
@@ -31,15 +33,17 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('gridExtra')"  # [not win]
+    - $R -e "library('gridExtra')"           # [not win]
     - "\"%R%\" -e \"library('gridExtra')\""  # [win]
 
 about:
-  home: https://github.com/baptiste/gridextra
+  home: https://CRAN.R-project.org/package=gridExtra
   license: GPL (>= 2)
   summary: Provides a number of user-level functions to work with "grid" graphics, notably to
     arrange multiple grid-based plots on a page, and draw tables.
   license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
 
 extra:
   recipe-maintainers:
@@ -47,3 +51,5 @@ extra:
     - bgruening
     - daler
     - jdblischak
+    - cbrueffer
+    - dbast
