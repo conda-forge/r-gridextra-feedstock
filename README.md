@@ -1,11 +1,11 @@
-About r-gridextra
-=================
+About r-gridextra-feedstock
+===========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-gridextra-feedstock/blob/main/LICENSE.txt)
 
 Home: https://CRAN.R-project.org/package=gridExtra
 
 Package license: GPL-2.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-gridextra-feedstock/blob/main/LICENSE.txt)
 
 Summary: Provides a number of user-level functions to work with "grid" graphics, notably to arrange multiple grid-based plots on a page, and draw tables.
 
