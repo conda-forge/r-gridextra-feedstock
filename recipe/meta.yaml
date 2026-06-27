@@ -1,4 +1,4 @@
-{% set version = '2.3' %}
+{% set version = "2.3.1" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/gridExtra_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/gridExtra/gridExtra_{{ version }}.tar.gz
-  sha256: 81b60ce6f237ec308555471ae0119158b115463df696d2eca9b177ded8988e3b
+  sha256: de42e501ac2c6a70bd0ffc18d7703e9b0e6b878c610df09756183c3e52445c82
 
 build:
-  number: 1007
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
@@ -36,8 +36,7 @@ test:
 about:
   home: https://CRAN.R-project.org/package=gridExtra
   license: GPL-2.0-or-later
-  summary: Provides a number of user-level functions to work with "grid" graphics, notably to
-    arrange multiple grid-based plots on a page, and draw tables.
+  summary: Provides a number of user-level functions to work with "grid" graphics, notably to arrange multiple grid-based plots on a page, and draw tables.
   license_family: GPL3
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
